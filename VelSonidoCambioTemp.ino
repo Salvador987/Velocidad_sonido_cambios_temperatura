@@ -11,9 +11,9 @@ García Rodríguez Víctor Hugo
  */
 
 
-#include "DHT.h"          //biblioteca para el sensor de humedad y tmperatura DHT 11
+#include "DHT.h"          //Biblioteca para el sensor de humedad y tmperatura DHT 11
 #define DHTPIN 2          //Define el pin por el que se recibirá la señal del DHT 11
-#define DHTTYPE DHT11     //De especifica el tipo exacto de sensor
+#define DHTTYPE DHT11     //Se especifica el tipo exacto de sensor
 DHT dht(DHTPIN, DHTTYPE); // 
 
 float tiempo;           //Eco (Echo)
@@ -33,8 +33,8 @@ void setup()
 
 void loop() 
 {
-  digitalWrite (9,LOW);       //Pulso bajo para asegurar que no exita una lectura de señal parasita
-  delayMicroseconds(50);       //duración del pulso bajo de 5 microsegundos 
+  digitalWrite (9,LOW);       //Pulso bajo para asegurar que no exista una lectura de señal parasita
+  delayMicroseconds(50);       //duración del pulso bajo de 50 microsegundos 
   digitalWrite(9,HIGH);       //Pulso en alto para activar el sensor ultrasonico
   delayMicroseconds(10);      //duración del pulso alto de 10 microsegundos  
   
@@ -47,16 +47,16 @@ distancia= round(float(0.01715 * tiempo)); //calcula la distancia, necesaria par
  
 if(distancia >= 50.00 && distancia <= 55.20)
 {
-//Velocidad del sonido considerando una distancía fija en metros (0.50) y la velocidad depende del tiempoque tarda en regresar el pulso/////
+//Velocidad del sonido considerando una distancia fija en metros (0.50) y la velocidad depende del tiempoque tarda en regresar el pulso/////
 velocidad = (2.0 * 0.50) / (tiempo / 1000000.0);////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 temperatura = dht.readTemperature(); // Almacena la temperatura obtenida por el sendor DHT11 en la variable temperatura 
 
-velocidadAire=331.4+(0.6*temperatura); // formula para calcular la velocidad del sonido cuando hay cambios de temperatura
+velocidadAire=331.4+(0.6*temperatura); // Formula para calcular la velocidad del sonido cuando hay cambios de temperatura
 
-//imprime la velocidad del sonido a partir de las lecturas obtenidas por los sensores/////////////////////////////////////////////////////////
+//Imprime la velocidad del sonido a partir de  de la formula v=331.4+(0.6 x °C) /////////////////////////////////////////////////////////
   Serial.print("\t Velocidad calculada="); ///////////////////////////////////////////////////////////////////////////////////////////////////
   Serial.print(velocidadAire,0);//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Serial.print( "m/s");///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,19 +65,19 @@ velocidadAire=331.4+(0.6*temperatura); // formula para calcular la velocidad del
   Serial.print("\t Distancia=");
   Serial.print(distancia);
   Serial.print( "cm");
-//imprime la temperatura del ambiente a partir de las lecturas obtenidas por el sendor DHT11//////////////////////////////////////////////////
+//Imprime la temperatura del ambiente a partir de las lecturas obtenidas por el sendor DHT11//////////////////////////////////////////////////
   Serial.print("\t Temperatura=");////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Serial.print(temperatura);//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Serial.print( "°C");////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//imprime la velocidad del sonido teorica a partir de la /////////////////////////////////////////////////////////
+//Imprime la velocidad del sonido teorica a partir las lecturas obtenidas por los sensores /////////////////////////////////////////////////////////
   Serial.print("\t Velocidad medida =");
   Serial.print(velocidad,0);
   Serial.println( "m/s");
 
 
-  delay(1000); //////////// pausa el programa en mili segundos(ms)  1s= 1000 ms
+  delay(1000); //////////// Pausa el programa en mili segundos(ms)  1s= 1000 ms
   }
    
 }
