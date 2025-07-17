@@ -1,3 +1,16 @@
+/* Escrito por:
+
+Hernández Hernández Lluvia
+Cuadros Jiménez Veronica
+Cortés Sánchez Josué
+Acevedo Mazzoco Alejandro
+Tavera Mosqueda Salvador
+García Rodríguez Víctor Hugo
+
+//// Descargar biblioteca DHT11 https://github.com/adafruit/DHT-sensor-library
+ */
+
+
 #include "DHT.h"          //biblioteca para el sensor de humedad y tmperatura DHT 11
 #define DHTPIN 2          //Define el pin por el que se recibirá la señal del DHT 11
 #define DHTTYPE DHT11     //De especifica el tipo exacto de sensor
